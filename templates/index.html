@@ -1,0 +1,33 @@
+🏛️ Command Center: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atolagbe Kings Venture | Grand Lobby</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>👑 Atolagbe Kings Venture</h1>
+        <p style="color: #8b949e; font-size: 18px;">Global Headquarters of the Atolagbe Empire</p>
+
+        <hr style="border-color: #30363d; margin: 30px 0;">
+
+        <h3>Our Pillars of Power</h3>
+        <ul style="list-style-type: none; padding: 0; font-size: 20px; line-height: 2.0; text-align: left; display: inline-block;">
+            <li>🏛️ <b>Atolagbe Academy</b></li>
+            <li>🌐 <b>The Kings Network</b></li>
+            <li>👁️ <b>Global Overwatch</b></li>
+        </ul>
+
+        <hr style="border-color: #30363d; margin: 30px 0;">
+
+        <p style="color: #d4af37;"><i>Authorized Personnel Only Beyond This Point</i></p>
+        
+        <a href="{{ url_for('login') }}">
+            <button>Enter Command Center Vault</button>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.venv
+# Security: Ignore real environment variables and secrets
+.env
+
+# Security: Ignore the live SQLite database
+empire.db
+*.db
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
