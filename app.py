@@ -105,6 +105,14 @@ def login():
             
     return render_template('login.html')
 
+@app.route('/quiz')
+def quiz():
+    # 1. The engine opens the database filing cabinet
+    questions = QuizQuestion.query.all()
+    
+    # 2. The engine sends the questions to the HTML kitchen to be cooked
+    return render_template('quiz.html', questions=questions)
+
 # 3. THE VAULT
 @app.route('/dashboard')
 def dashboard():
