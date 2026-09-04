@@ -1,4 +1,3 @@
-# pyright: reportMissingImports=false
 from datetime import datetime
 import os
 

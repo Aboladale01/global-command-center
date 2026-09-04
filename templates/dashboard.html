@@ -1,4 +1,3 @@
-          🚨  🛠️ 
 `html
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +40,46 @@
         <p style="text-align: center; margin-bottom: 20px;">Click below to download your assets.</p>
         
         <div style="display: flex; flex-direction: column; gap: 15px;">
-            <a href="{{ url_for('static', filename='manifestation.pdf') }}" download style="padding: 12px; background-color: #F8F9FA; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; display: block;">📥 Download: Manifestation</a>
-            <a href="{{ url_for('static', filename='mindfulness_meditation.pdf') }}" download style="padding: 12px; background-color: #F8F9FA; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; display: block;">📥 Download: Mindfulness Meditation</a>
-            <a href="{{ url_for('static', filename='public_speaking.pdf') }}" download style="padding: 12px; background-color: #F8F9FA; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; display: block;">📥 Download: Public Speaking</a>
+            <a href="{{ url_for('static', filename='manifestation.pdf') }}" download style="padding: 12px; background-color: #F8F9FA; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; display: block;">📥 Download: Manifestation</a>                                                                   <a href="{{ url_for('static', filename='mindfulness_meditation.pdf') }}" download style="padding: 12px; background-color: #F8F9FA; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; display: block;">📥 Download: Mindfulness Meditation</a>                                         <a href="{{ url_for('static', filename='public_speaking.pdf') }}" download style="padding: 12px; background-color: #F8F9FA; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; display: block;">📥 Download: Public Speaking</a>
             <a href="{{ url_for('static', filename='self_improvement_master.pdf') }}" download style="padding: 15px; background-color: #FFD700; color: #000; text-decoration: none; font-weight: 900; border-radius: 5px; display: block; font-size: 18px; text-transform: uppercase;">🏆 Download: Self-Improvement Master</a>
-        </div>
+    <script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
+
+<button class="buy-btn" onclick="payWithMonnify()">Buy Ebook - ₦5,000</button>
+
+<script type="text/javascript">
+    function payWithMonnify() {
+        MonnifySDK.initialize({
+            amount: 5000, // The price of your Ebook in Naira & US Dollars" for the US DoLLar 6
+            currency: "NGN",
+            reference: "ATOLAGBE_" + new String((new Date()).getTime()), // Creates a unique receipt number for every click
+            customerFullName: "Academy Student", // Later, you can link this to an input box
+            customerEmail: "student@test.com", // Later, you can link this to an input box
+            apiKey: "M_TEST_GC3B8XG2XX", // Your exact Public Test Key
+            contractCode: "5867418298", // Your exact Test Contract Code
+            paymentDescription: "Manifestation Mastery Ebook",
+            
+            onLoadStart: function() {
+                console.log("Monnify loading...");
+            },
+            onLoadComplete: function() {
+                console.log("Monnify popup ready!");
+            },
+            onComplete: function(response) {
+                // THIS HAPPENS WHEN THE PAYMENT IS SUCCESSFUL
+                console.log("Payment Success:", response);
+                alert("Payment Successful! Your Ebook is ready.");
+                
+                // Eventually, this is where we will tell the website to unlock the PDF download!
+            },
+            onClose: function(data) {
+                // THIS HAPPENS IF THE STUDENT CLOSES THE POPUP WITHOUT PAYING
+                console.log("Payment Window Closed:", data);
+                alert("Payment cancelled. You can try again when you are ready!");
+            }
+        });
+    }
+</script>
+ </div>
     </div>
 
     <div class="card">
@@ -89,7 +123,8 @@
             <button type="submit">UPDATE SECURITY</button>
         </form>
     </div>
-[8/13/2026 4:39 PM] Saidi Atolagbe: <div class="chart-container">
+
+    <div class="chart-container">
         <canvas id="financeChart"></canvas>
     </div>
 

@@ -1,112 +1,61 @@
- 🕵️  🛠️  
-
-`html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Atolagbe Empire</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylus.css') }}">
-    
+    <title>Command Center Login</title>
     <style>
-        /* 1. The Cinematic Background */
         body {
-            /* Fixed the .jpg extension here so your image loads! */
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/empire-bg.jpg');
-            background-size: cover; 
-            background-position: center;
-            background-attachment: fixed;
-            color: white; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2e;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
         }
-
-        /* 2. The Frosted Glass Panel */
-        .glass-panel {
-            background: rgba(0, 0, 0, 0.7); /* Darkened slightly for text readability */
-            backdrop-filter: blur(10px); 
+        .login-box {
+            background-color: #282a36;
             padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 450px;
-            margin: 100px auto; /* Centers the panel vertically and horizontally */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
             text-align: center;
+            width: 300px;
         }
-
-        /* Input Styles */
-        .input-group {
-            text-align: left;
-            margin-bottom: 15px;
-        }
-        .input-group label {
-            font-weight: bold;
-            color: #d4af37; /* Empire Gold */
-        }
-        .input-group input {
+        input {
             width: 90%;
             padding: 10px;
-            margin-top: 5px;
-            border: none;
-            border-radius: 4px;
-            background-color: #222;
-            color: white;
-            font-size: 16px;
-        }
-        .btn-primary {
-            background-color: #d4af37;
-            color: black;
-            font-weight: bold;
-            padding: 12px 20px;
-            width: 100%;
+            margin: 10px 0;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
         }
-        .btn-primary:hover {
-            background-color: white;
+        button {
+            background-color: #ff79c6;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #ff92d0;
         }
     </style>
 </head>
 <body>
-    <div class="glass-panel">
-        <h1 style="color: #d4af37;">Command Center Login</h1>
-        <p>Welcome back to the Atolagbe Empire. Please verify your credentials.</p> 
-        {% if error %}
-        <div style="background-color:rgba(255, 0 ,0 ,0.2); border: 1px solid #ff3333; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-            <p style="color:#ff3333; font-weight: bold; margin: 0;">{{ error }}</p></p>
-        </div>
-        {% endif %}
-          {% with messages = get_flashed_messages() %}
-            {% if messages %}
-              <ul style="list-style-type: none; padding: 0;">
-              {% for message in messages %}
-                <li style="color: #ff3333; font-weight: bold; margin-bottom: 10px;">{{ message }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
 
-        <form action="/authenticate" method="POST">
-            <div class="input-group">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <br>
-            <button type="submit" class="btn-primary">Access Vault</button>
+    <div class="login-box">
+        <h2>System Override Access</h2>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="CEO Username" required>
+            <input type="password" name="password" placeholder="Passcode" required>
+            <button type="submit">Authenticate</button>
         </form>
-        <br>
-        <p><a href="/" style="color: #00d2ff; text-decoration: none;">Return to Homepage</a></p>
     </div>
+
 </body>
 </html>
-`
- 
