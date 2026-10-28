@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import re
 import os
 
-app = Flask(name)
+app = Flask(__name__)
 
 # 1. SECRET VARIABLE (Secures your browser sessions)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'kingventure-super-secret-key-2026')
