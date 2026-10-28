@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+
+    <button class="buy-btn" onclick="payWithMonnify()">Buy Ebook - ₦5,000</button>
+
+    <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+    <script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
+    
+    <script type="text/javascript">
+        function payWithMonnify() {
+            MonnifySDK.initialize({
+                amount: 5000, // The price of your Ebook in Naira
+                currency: "NGN",
+                reference: "ATOLAGBE_" + new String((new Date()).getTime()), // Creates a unique receipt number for every click
+                customerFullName: "Academy Student", // Later, you can link this to an input box
+                customerEmail: "student@test.com", // Later, you can link this to an input box
+                apiKey: "M_TEST_GC3B8XG2XX", // Your exact Public Test Key
+                contractCode: "5867418298", // Your exact Test Contract Code
+                paymentDescription: "Manifestation Mastery Ebook",
+                
+                onLoadStart: function() {
+                    console.log("Monnify loading...");
+                },
+                onLoadComplete: function() {
+                    console.log("Monnify popup ready!");
+                },
+                onComplete: function(response) {
+                    // THIS HAPPENS WHEN THE PAYMENT IS SUCCESSFUL
+                    console.log("Payment Success:", response);
+                    alert("Payment Successful! Your Ebook is ready.");
+                    
+                    // Eventually, this is where we will tell the website to unlock the PDF download!
+                },
+                onClose: function(data) {
+                    // THIS HAPPENS IF THE STUDENT CLOSES THE POPUP WITHOUT PAYING
+                    console.log("Payment Window Closed:", data);
+                    alert("Payment cancelled. You can try again when you are ready!");
+                }
+            });
+        }
+    </script>
+</body>
+  </html>
