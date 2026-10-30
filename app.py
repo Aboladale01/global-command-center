@@ -63,11 +63,11 @@ def chat():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = request.form.get('Atolagbe')
+        password = request.form.get('Empire2027')
         
         # Add your administrative check here (e.g., matching your master credentials)
-        if username == 'Admin' and password == 'Empire2027':
+        if username == 'Atolagbe' and password == 'Empire2027':
             session['logged_in'] = True
             return redirect(url_for('dashboard'))
         else:
