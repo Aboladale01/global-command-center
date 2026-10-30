@@ -67,7 +67,7 @@ def login():
         password = request.form.get('password')
         
         # Add your administrative check here (e.g., matching your master credentials)
-        if username == 'Admin' and password == 'YourSecurePassword':
+        if username == 'Admin' and password == 'Empire':
             session['logged_in'] = True
             return redirect(url_for('dashboard'))
         else:
