@@ -100,11 +100,13 @@ def signup():
 @app.route('/')
 def home():
     return render_template('index.html')
-
-@app.route('/dashboard')
+    @app.route('/dashboard')
 def dashboard():
+    # If you want to require login, uncomment the lines below:
+    # if not session.get('logged_in'):
+    #     return redirect(url_for('login'))
+    
     return render_template('dashboard.html')
-
 if '__name__' == '__main__':
     import os
     port = int(os.environ.get("PORT", 5000))
