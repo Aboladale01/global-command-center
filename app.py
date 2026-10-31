@@ -62,8 +62,8 @@ from flask import request, redirect, url_for, flash, session, render_template
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        'entered_username' = request.form.get('username')
-        'entered_password' = request.form.get('password')
+        entered_username = request.form.get('username')
+        entered_password = request.form.get('password')
         
         # --- SET YOUR PERMANENT USERNAME AND PASSWORD HERE ---
         MY_USERNAME = 'CEO_Boss'
