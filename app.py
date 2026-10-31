@@ -62,14 +62,14 @@ from flask import request, redirect, url_for, flash, session, render_template
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        entered_username = request.form.get('Boss')
-        entered_password = request.form.get('Empire1234')
+        entered_username = request.form.get('username')
+        entered_password = request.form.get('password')
         
         # --- SET YOUR PERMANENT USERNAME AND PASSWORD HERE ---
         MY_USERNAME = 'Boss'
         MY_PASSWORD = 'Empire1234'
         
-        if entered_username == Boss and entered_password == Empire1234:
+        if 'entered_username' == 'username' and 'entered_password' == 'password':
             session['logged_in'] = True
             return redirect(url_for('dashboard'))
         else:
