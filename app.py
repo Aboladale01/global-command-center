@@ -101,7 +101,7 @@ def signup():
 @app.route('/')
 def home():
     return render_template('index.html')
-    @app.route('/dashboard')
+@app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
