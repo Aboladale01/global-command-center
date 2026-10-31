@@ -67,7 +67,7 @@ def login():
         
         # --- SET YOUR PERMANENT USERNAME AND PASSWORD HERE ---
         MY_USERNAME = 'Boss'
-        MY_PASSWORD = 'Empire1233'
+        MY_PASSWORD = 'Empire1234'
         
         if entered_username == MY_USERNAME and entered_password == MY_PASSWORD:
             session['logged_in'] = True
