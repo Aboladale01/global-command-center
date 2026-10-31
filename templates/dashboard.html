@@ -32,6 +32,13 @@
         <p style="color: #d4af37;">
             <i>Authorized Personnel Only Beyond This Point</i>
         </p>
+        @app.route('/dashboard')
+def dashboard():
+    # If you want to require login, uncomment the lines below:
+    # if not session.get('logged_in'):
+    #     return redirect(url_for('login'))
+    
+    return render_template('dashboard.html')
 
         <a href="{{ url_for('login') }}">
             <button class="btn-primary" style="margin-top: 15px;">Enter Command Center Vault</button>
