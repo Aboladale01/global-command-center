@@ -52,11 +52,11 @@ def chat():
         reply = "Take a deep breath. Inhale peace, exhale tension. ❤️"
     elif "marketing" in msg_lower or "money" in msg_lower:
         reply = "Kingventure Rule #1: Consistency beats talent. Keep creating value! 💰"
-
-    # Safe Database Insertion
+  # Safe Database Insertion
     new_chat = ChatHistory(user_msg=user_input, bot_msg=reply)
     db.session.add(new_chat)
     db.session.commit()
+from flask import request, redirect, url_for, flash, session, render_template
 from flask import request, redirect, url_for, flash, session, render_template
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -65,15 +65,17 @@ def login():
         entered_username = request.form.get('username')
         entered_password = request.form.get('password')
         
-        # --- SET YOUR PERMANENT USERNAME AND PASSWORD HERE ---
-        MY_USERNAME = 'CEO_Boss'
-        MY_PASSWORD = 'Empire1234'
+        # Print to your Render logs so you can see what you typed in real-time
+        print(f"Attempted login with Username: '{entered_username}' and Password: '{entered_password}'")
         
-        if 'entered_username' == 'username' and 'entered_password' == 'password':
+        # Your master credentials
+        if entered_username == 'CEO_Boss' and entered_password == 'Empire1234':
             session['logged_in'] = True
+            print("Login successful! Redirecting to dashboard...")
             return redirect(url_for('dashboard'))
         else:
             flash('Access Denied: Check your username or password.')
+            print("Login failed: Credentials did not match.")
             
     return render_template('login.html')
 
