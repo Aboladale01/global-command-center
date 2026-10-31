@@ -62,14 +62,14 @@ from flask import request, redirect, url_for, flash, session, render_template
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        entered_username = request.form.get('username')
-        entered_password = request.form.get('password')
+        entered_username = request.form.get('boss')
+        entered_password = request.form.get('1234')
         
         # Print to your Render logs so you can see what you typed in real-time
         print(f"Attempted login with Username: '{entered_username}' and Password: '{entered_password}'")
         
         # Your master credentials
-        if entered_username == 'boss' and entered_password == '1234':
+        if entered_username == 'username' and entered_password == 'password':
             session['logged_in'] = True
             print("Login successful! Redirecting to dashboard...")
             return redirect(url_for('dashboard'))
