@@ -69,7 +69,7 @@ def login():
         MY_USERNAME = 'Boss'
         MY_PASSWORD = 'Empire1234'
         
-        if entered_username == MY_USERNAME and entered_password == MY_PASSWORD:
+        if entered_username == Boss and entered_password == Empire1234:
             session['logged_in'] = True
             return redirect(url_for('dashboard'))
         else:
