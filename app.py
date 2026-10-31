@@ -57,24 +57,25 @@ def chat():
     new_chat = ChatHistory(user_msg=user_input, bot_msg=reply)
     db.session.add(new_chat)
     db.session.commit()
-
-    from flask import request, redirect, url_for, flash, session
+from flask import request, redirect, url_for, flash, session, render_template
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('Atolagbe')
-        password = request.form.get('Empire2027')
+        entered_username = request.form.get('username')
+        entered_password = request.form.get('password')
         
-        # Add your administrative check here (e.g., matching your master credentials)
-        if username == 'Atolagbe' and password == 'Empire2027':
+        # --- SET YOUR PERMANENT USERNAME AND PASSWORD HERE ---
+        MY_USERNAME = 'Boss'
+        MY_PASSWORD = 'Empire1233'
+        
+        if entered_username == MY_USERNAME and entered_password == MY_PASSWORD:
             session['logged_in'] = True
             return redirect(url_for('dashboard'))
         else:
-            flash('Invalid credentials, Commander. Try again.')
+            flash('Access Denied: Check your username or password.')
             
     return render_template('login.html')
-    return jsonify({"response": reply})
 
 @app.route("/signup", methods=["POST"])
 def signup():
