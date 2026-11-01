@@ -69,7 +69,7 @@ def login():
         print(f"Attempted login with Username: '{entered_username}' and Password: '{entered_password}'")
         
         # Your master credentials
-        if entered_username == 'username' and entered_password == 'password':
+        if entered_username == 'Atolagbeking' and entered_password == 'Boss2027':
             session['logged_in'] = True
             print("Login successful! Redirecting to dashboard...")
             return redirect(url_for('dashboard'))
