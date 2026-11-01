@@ -62,8 +62,8 @@ from flask import request, redirect, url_for, flash, session, render_template
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        entered_username = request.form.get('Atolagbeking')
-        entered_password = request.form.get('Boss2027')
+        entered_username = request.form.get('username')
+        entered_password = request.form.get('password')
         
         # Print to your Render logs so you can see what you typed in real-time
         print(f"Attempted login with Username: '{entered_username}' and Password: '{entered_password}'")
