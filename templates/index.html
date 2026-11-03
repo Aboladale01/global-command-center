@@ -1,0 +1,156 @@
+    html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atolagbe Academy | Master Your Mind, Build Resilience & Wealth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --gold: #d97706;
+            --bg-light: #f8fafc;
+            --text-dark: #334155;
+            --white: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        
+        header { background: linear-gradient(135deg, var(--primary), #1e293b); color: var(--white); text-align: center; padding: 80px 20px; }
+        header h1 { font-size: 2.5rem; margin-bottom: 15px; color: var(--white); }
+        header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; }
+        .btn { display: inline-block; background-color: var(--accent); color: var(--white); padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+        .btn:hover { background-color: #1d4ed8; }
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+        .section-title p { color: #64748b; }
+        
+        .track-section { margin-bottom: 60px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .card { background: var(--white); border-radius: 10px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--accent); }
+        .card.gold-border { border-top-color: var(--gold); }
+        .card h3 { font-size: 1.25rem; margin-bottom: 10px; color: var(--primary); }
+        .card p { font-size: 0.95rem; color: #64748b; margin-bottom: 20px; flex-grow: 1; }
+        
+        .download-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; text-decoration: none; }
+        .download-link:hover { text-decoration: underline; }
+        
+        /* AKV Banner & Q&A Styles */
+        .akv-banner { background: linear-gradient(135deg, #1e293b, var(--gold)); color: var(--white); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 60px; }
+        .akv-banner h2 { font-size: 2rem; margin-bottom: 15px; }
+        .akv-banner p { max-width: 700px; margin: 0 auto 20px; font-size: 1.1rem; opacity: 0.95; }
+        
+        .qa-section { background: var(--white); border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 60px; border-left: 5px solid var(--gold); }
+        .qa-section h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .qa-box { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-top: 15px; }
+        .qa-box input, .qa-box textarea { width: 100%; padding: 10px; margin-top: 8px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 5px; }
+        
+        footer { background: var(--primary); color: var(--white); text-align: center; padding: 30px; margin-top: 60px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Atolagbe Academy</h1>
+        <p>Master Your Mind, Build Unshakable Resilience, and Claim Financial Supremacy.</p>
+        <a href="#library" class="btn">Explore the Library</a>
+    </header>
+
+    <div class="container" id="library">
+
+        <div class="akv-banner">
+            <h2><i class="fa-solid fa-coins"></i> Earn AKV Cryptocurrency Points</h2>
+            <p>Participate in academy Q&A sessions, complete coursework, and test your knowledge on our core eBooks to earn <strong>AKV (Atolagbe Academy Tokens)</strong>—the digital currency powering our student reward ecosystem.</p>
+        </div>
+
+        <div class="qa-section">
+            <h3><i class="fa-solid fa-circle-question" style="color:var(--gold);"></i> Academy Challenge & Q&A Board</h3>
+            <p>Test your insights on our eBooks! Submit your answers or questions below to engage with the academy community and qualify for AKV reward points.</p>
+            <div class="qa-box">
+                <label for="studentName"><strong>Your Name / Handle:</strong></label>
+                <input type="text" id="studentName" placeholder="Enter your name">
+                
+                <label for="studentAnswer"><strong>Your Question or eBook Insight:</strong></label>
+                <textarea id="studentAnswer" rows="3" placeholder="Type your answer or reflection here..."></textarea>
+                
+                <button class="btn" onclick="alert('Submission received! Welcome to the AKV evaluation queue, Boss.')">Submit to Academy</button>
+            </div>
+        </div>
+
+        <div class="track-section">
+            <div class="section-title">
+                <h2>Track 1: Inner Mastery & Emotional Intelligence</h2>
+                <p>Master your thoughts, emotions, and personal manifestation.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fa-solid fa-seedling" style="color:var(--accent);"></i> Mindfulness Meditation</h3>
+                    <p>Discover inner peace, mental clarity, and focus through guided meditation foundations.</p>
+                    <a href="YOUR_PDF_LINK_1" target="_blank" class="download-link"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent);"></i> Manifestation</h3>
+                    <p>Align your vision with purposeful action to consciously create your desired reality.</p>
+                    <a href="YOUR_PDF_LINK_2" target="_blank" class="download-link"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-anchor" style="color:var(--accent);"></i> The Anchor Protocol</h3>
+                    <p>Master emotional control, stability, and grace within your relationship dynamics.</p>
+                    <a href="YOUR_PDF_LINK_3" target="_blank" class="download-link"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="track-section">
+            <div class="section-title">
+                <h2>Track 2: Resilience & Power Building</h2>
+                <p>Forge unbreakable mental fortitude for personal upgrades and societal leadership.</p>
+            </div>
+            <div class="grid">
+                <div class="card gold-border">
+                    <h3><i class="fa-solid fa-shield-halved" style="color:var(--gold);"></i> Resilient & Grit (Self-Improvement)</h3>
+                    <p>Overcome obstacles and build high-performance habits for personal transformation.</p>
+                    <a href="YOUR_PDF_LINK_4" target="_blank" class="download-link" style="color:var(--gold);"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+                <div class="card gold-border">
+                    <h3><i class="fa-solid fa-landmark" style="color:var(--gold);"></i> Resilient & Grit (Societal Power)</h3>
+                    <p>Scale individual resilience into collective leadership, community strength, and generational impact.</p>
+                    <a href="YOUR_PDF_LINK_5" target="_blank" class="download-link" style="color:var(--gold);"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="track-section">
+            <div class="section-title">
+                <h2>Track 3: Wealth & Influence</h2>
+                <p>Command your public voice and architect your financial dominance.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fa-solid fa-microphone-lines" style="color:var(--accent);"></i> Public Speaking</h3>
+                    <p>Command any room, build authority, and influence audiences with a powerful voice.</p>
+                    <a href="YOUR_PDF_LINK_6" target="_blank" class="download-link"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-chart-line" style="color:var(--accent);"></i> Wealth Blueprint</h3>
+                    <p>Strategic frameworks for long-term wealth creation, asset management, and financial supremacy.</p>
+                    <a href="YOUR_PDF_LINK_7" target="_blank" class="download-link"><i class="fa-solid fa-file-arrow-down"></i> Download PDF</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Atolagbe Academy (atolagbeacademy.com). All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
