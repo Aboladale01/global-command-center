@@ -1,0 +1,151 @@
+
+
+   html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Atolagbe Academy</title>
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent-gold: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success-green: #10b981;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-top: 4px solid var(--accent-gold);
+        }
+        h2 {
+            margin-top: 0;
+            color: var(--accent-gold);
+        }
+        .reading-box {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .download-gate {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px dashed var(--accent-gold);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .email-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        input[type="email"] {
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            width: 280px;
+            font-size: 1rem;
+        }
+        button {
+            background: var(--accent-gold);
+            color: var(--primary-bg);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .alert {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--success-green);
+            color: var(--success-green);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h2>📖 Live Reading Hub: {{ title }}</h2>
+        <p style="color: var(--text-muted);">Read the complete material live right here on your screen.</p>
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 20px 0;">
+        
+        <div class="reading-box">
+            <p>{{ content }}</p>
+        </div>
+
+        <div class="download-gate">
+            <h3>Want to take this offline?</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Drop your email below to instantly have the complete downloadable file sent to your inbox.</p>
+            
+            <form action="/send-download" method="POST" class="email-form">
+                <input type="email" name="user_email" placeholder="Enter your email address..." required>
+                <button type="submit">Send Me the File</button>
+            </form>
+        </div>
+
+        <a href="/" class="back-link">← Return to Command Center Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
