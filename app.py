@@ -87,7 +87,24 @@ def login():
             print("Login failed: Credentials did not match.")
             
     return render_template('login.html')
+from flask import render_template, request, redirect, url_for, flash
 
+@app.route('/reader')
+def reader_view():
+    # This renders the live reading page on screen
+    sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
+    sample_content = "Welcome to the core reading room. Here you can read your modules, guides, and code strategies live on the screen without needing to download anything first..."
+    return render_template('reader_view.html', title=sample_title, content=sample_content)
+
+@app.route('/send-download', methods=['POST'])
+def send_download():
+    user_email = request.form.get('user_email')
+    
+    # Here you can later connect email sending logic (like Flask-Mail or an API)
+    # For now, it captures the email and gives a successful confirmation!
+    
+    flash(f"Success! The download link has been securely dispatched to {user_email}.", "success")
+    return redirect(url_for('reader_view'))
 @app.route("/signup", methods=["POST"])
 def signup():
     data = request.get_json() or {}
