@@ -35,7 +35,16 @@ def is_valid_email(email):
 @app.route("/")
 def index():
     return render_template("index.html")
-
+@app.route('/submit', methods=['POST'])
+def submit_form():
+    user_input = request.form.get('user_link') # or whatever field name you used
+    
+    # Here, your system processes the ebook/code content to display it
+    ebook_title = "Atolagbe Academy Core Blueprint"
+    ebook_content = "This is the live text preview of your ebook or code guidelines..."
+    
+    # Render the reading page instead of a plain text message
+    return render_template('reader_view.html', title=ebook_title, content=ebook_content)
 @app.route("/get", methods=["POST"])
 def chat():
     # Safe JSON fetching prevents bad scripts
