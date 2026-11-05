@@ -1,0 +1,91 @@
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atolagbe Academy | Interactive Wealth Sandbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --gold: #d97706;
+            --emerald: #10b981;
+            --bg-light: #f8fafc;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--primary); color: var(--text-light); line-height: 1.6; padding: 40px 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 16px; border-top: 5px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: var(--gold); font-size: 2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+        p.sub { color: #94a3b8; margin-bottom: 30px; font-size: 1rem; }
+        .tool-box { background: #0f172a; padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: #cbd5e1; }
+        input { width: 100%; padding: 12px; background: #1e293b; border: 1px solid #475569; color: white; border-radius: 8px; font-size: 1rem; margin-bottom: 15px; }
+        .btn { display: inline-block; background-color: var(--accent); color: white; padding: 12px 25px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: background 0.3s; width: 100%; text-align: center; }
+        .btn:hover { background-color: #1d4ed8; }
+        .result-box { margin-top: 20px; padding: 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--emerald); border-radius: 8px; display: none; }
+        .result-box h3 { color: var(--emerald); margin-bottom: 5px; }
+        .back-btn { display: inline-block; margin-top: 30px; color: #94a3b8; text-decoration: none; font-weight: 600; }
+        .back-btn:hover { color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><i class="fa-solid fa-laptop-code"></i> Wealth & Growth Sandbox</h1>
+    <p class="sub">Test out live algorithmic models and financial projection pipelines built for Atolagbe Academy students.</p>
+
+    <div class="tool-box">
+        <h3><i class="fa-solid fa-chart-line" style="color:var(--gold);"></i> Compound Wealth Simulator</h3>
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px;">Calculate your projected digital asset and savings growth over time.</p>
+        
+        <label for="monthlyInput">Monthly Investment / Savings (₦):</label>
+        <input type="number" id="monthlyInput" placeholder="e.g. 50000" value="50000">
+
+        <label for="yearsInput">Investment Horizon (Years):</label>
+        <input type="number" id="yearsInput" placeholder="e.g. 5" value="5">
+
+        <button class="btn" onclick="calculateWealth()">Run Wealth Simulation</button>
+
+        <div class="result-box" id="resultArea">
+            <h3>Simulation Complete</h3>
+            <p id="outputMessage" style="font-size: 1.1px; color: #f8fafc;"></p>
+        </div>
+    </div>
+
+    <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Return to Command Center</a>
+</div>
+
+<script>
+    function calculateWealth() {
+        let monthly = parseFloat(document.getElementById('monthlyInput').value) || 0;
+        let years = parseFloat(document.getElementById('yearsInput').value) || 0;
+        
+        if(monthly <= 0 || years <= 0) {
+            alert("Please enter valid positive numbers, Boss.");
+            return;
+        }
+
+        let totalMonths = years * 12;
+        // Simple compound projection calculation assuming 12% annual return (~1% monthly)
+        let rate = 0.01;
+        let futureValue = monthly * ((Math.pow(1 + rate, totalMonths) - 1) / rate);
+        
+        let formattedValue = futureValue.toLocaleString('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 });
+        
+        let resultArea = document.getElementById('resultArea');
+        let outputMessage = document.getElementById('outputMessage');
+        
+        outputMessage.innerHTML = `Over <strong>${years} years</strong>, investing ₦${monthly.toLocaleString()} monthly can grow to an estimated <strong style="color: #f59e0b; font-size: 1.3rem;">${formattedValue}</strong>!`;
+        resultArea.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
+
