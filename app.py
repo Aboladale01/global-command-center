@@ -26,6 +26,10 @@ init_db()
 def home():
     return render_template('index.html')
 
+@app.route('/quiz')
+def quiz_view():
+    return render_template('quiz.html')
+
 @app.route('/reader')
 def reader_view():
     sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
