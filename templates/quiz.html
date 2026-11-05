@@ -1,0 +1,48 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz & Ebook Checkout - Atolagbe Academy</title>
+</head>
+<body>
+    <h1>Academy Ebook Checkout</h1>
+
+    <button class="buy-btn" onclick="payWithMonnify()">Buy Ebook - ₦5,000</button>
+
+    <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+    <script type="text/javascript" src="https://sdk.monnify.com/plugin/monnify.js"></script>
+    
+    <script type="text/javascript">
+        function payWithMonnify() {
+            MonnifySDK.initialize({
+                amount: 5000,
+                currency: "NGN",
+                reference: "ATOLAGBE_" + new String((new Date()).getTime()),
+                customerFullName: "Academy Student",
+                customerEmail: "student@test.com",
+                apiKey: "M_TEST_GC3B8XG2XX",
+                contractCode: "5867418298",
+                paymentDescription: "Manifestation Mastery Ebook",
+                
+                onLoadStart: function() {
+                    console.log("Monnify loading...");
+                },
+                onLoadComplete: function() {
+                    console.log("Monnify popup ready!");
+                },
+                onComplete: function(response) {
+                    console.log("Payment Success:", response);
+                    alert("Payment Successful! Your Ebook is ready.");
+                },
+                onClose: function(data) {
+                    console.log("Payment Window Closed:", data);
+                    alert("Payment cancelled. You can try again when you are ready!");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```
