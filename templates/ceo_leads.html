@@ -1,0 +1,61 @@
+(`templates/ceo_leads.html`)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Lead Command - Atolagbe Academy</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 40px; }
+        .container { max-width: 900px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 12px; border-top: 4px solid #f59e0b; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        h2 { color: #f59e0b; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #0f172a; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        th { background: #334155; color: #f59e0b; font-size: 0.9rem; text-transform: uppercase; }
+        td { color: #cbd5e1; font-size: 0.95rem; }
+        .no-leads { text-align: center; padding: 30px; color: #94a3b8; }
+        .back-btn { display: inline-block; margin-top: 20px; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+        .back-btn:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>👑 CEO Command: Student Lead Database</h2>
+    <p style="color: #94a3b8;">Real-time list of visitors and students who opted in for your downloads via the email gate.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Student / Visitor Email</th>
+                <th>Capture Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if leads %}
+                {% for lead in leads %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td style="color: #38bdf8; font-weight: 500;">{{ lead[0] }}</td>
+                    <td>{{ lead[1] }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3" class="no-leads">No leads captured yet. Test your email gate live on your site!</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <a href="/" class="back-btn">← Return to Public Command Center</a>
+</div>
+
+</body>
+</html>
+```
+
+--
