@@ -1,4 +1,3 @@
-python
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
@@ -69,4 +68,3 @@ def ceo_leads():
 
 if __name__ == '__main__':
     app.run(debug=True)
---
