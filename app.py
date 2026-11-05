@@ -61,6 +61,11 @@ def ceo_leads():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("SELECT email, timestamp FROM leads ORDER BY timestamp DESC")
+
+@app.route('/sandbox')
+def sandbox_view( ):
+    return render_template('sandbox.html')
+
     leads = cursor.fetchall()
     conn.close()
     
