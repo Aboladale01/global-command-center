@@ -35,6 +35,31 @@ def reader_view():
     sample_content = "Welcome to the core reading room. Here you can read your modules, guides, and code strategies live on the screen..."
     return render_template('reader_view.html', title=sample_title, content=sample_content)
 
+@app.route('/download-ebook-1')
+def download_ebook_1():
+    # Logic for Ebook 1
+    return "Downloading Ebook 1..."
+
+@app.route('/download-ebook-2')
+def download_ebook_2():
+    # Logic for Ebook 2
+    return "Downloading Ebook 2..."
+
+@app.route('/download-ebook-3')
+def download_ebook_3():
+    # Logic for Ebook 3
+    return "Downloading Ebook 3..."
+
+@app.route('/download-ebook-4')
+def download_ebook_4():
+    # Logic for Ebook4
+    return "Downloading Ebook 4..."
+
+@app.route('/download-ebook-5')
+def download_ebook_5():
+    # Logic for Ebook 5
+    return "Downloading Ebook 5..."
+
 # --- CAPTURE EMAIL & SAVE TO DATABASE ---
 @app.route('/send-download', methods=['POST'])
 def send_download():
