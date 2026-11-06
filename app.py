@@ -60,6 +60,11 @@ def download_ebook_5():
     # Logic for Ebook 5
     return "Downloading Ebook 5..."
 
+@app.route('/download-ebook-6')
+def dowmload_ebook_6():
+    # Logic for Ebook 6
+    return "Downloadong Ebook 6..."
+
 # --- CAPTURE EMAIL & SAVE TO DATABASE ---
 @app.route('/send-download', methods=['POST'])
 def send_download():
