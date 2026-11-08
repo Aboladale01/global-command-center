@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
-app = Flask __name__
+app = Flask__name__
 app.secret_key = 'atolagbe_secret_key_2026' # Required for flashing messages
 # --- DATABASE SETUP FUNCTION ---
 def init_db():
