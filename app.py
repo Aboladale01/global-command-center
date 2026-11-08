@@ -17,7 +17,15 @@ def init_db():
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
-    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS student_rewards (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL,
+        akv_tokens INTEGER DEFAULT 0,
+        quizzes_passed INTEGER DEFAULT 0,
+        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+''')
     # Create partnerships table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS partnerships (
@@ -73,6 +81,40 @@ def reader_view():
     sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
     sample_content = "Welcome to the core reading room. Here you can read your modules, guides, and code strategies live on the screen..."
     return render_template('reader_view.html', title=sample_title, content=sample_content)
+@app.route('/submit-quiz', methods=['POST'])
+def submit_quiz():
+    user_email = request.form.get('email', 'guest@academy.com')
+    
+    # Example scoring calculation (assuming 4 total questions)
+    correct_answers = int(request.form.get('score', 0))
+    total_questions = 4 
+    score_percentage = (correct_answers / total_questions) * 100
+    
+    earned_tokens = 0
+    passed = False
+    
+    # The 75% Threshold Rule
+    if score_percentage >= 75:
+        passed = True
+        earned_tokens = 100  # Reward for passing mastery level
+        
+        # Save or update rewards in database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        
+        # Check if student exists in rewards table
+        cursor.execute("SELECT akv_tokens FROM student_rewards WHERE email = ?", (user_email,))
+        row = cursor.fetchone()
+        
+        if row:
+            cursor.execute("UPDATE student_rewards SET akv_tokens = akv_tokens + ?, quizzes_passed = quizzes_passed + 1 WHERE email = ?", (earned_tokens, user_email))
+        else:
+            cursor.execute("INSERT INTO student_rewards (email, akv_tokens, quizzes_passed) VALUES (?, ?, 1)", (user_email, earned_tokens))
+            
+        conn.commit()
+        conn.close()
+
+    return render_template('quiz_result.html', percentage=score_percentage, passed=passed, tokens=earned_tokens)
 
 @app.route('/download-ebook-1')
 def download_ebook_1():
