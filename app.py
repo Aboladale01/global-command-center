@@ -30,7 +30,6 @@ cursor.execute()
 
 # Run the database setup on start
 init_db()
-
 @app.route('/')
 def home():
     return render_template('index.html')
