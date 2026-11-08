@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atolagbe Academy | Partnership & Business Contract</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --gold: #d97706;
+            --emerald: #10b981;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--primary); color: var(--text-light); line-height: 1.6; padding: 40px 20px; }
+        .container { max-width: 700px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 16px; border-top: 5px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: var(--gold); font-size: 1.8rem; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+        p.sub { color: #94a3b8; margin-bottom: 30px; font-size: 0.95rem; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: #cbd5e1; font-size: 0.9rem; }
+        input, select, textarea { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #475569; color: white; border-radius: 8px; font-size: 1rem; margin-bottom: 20px; }
+        textarea { resize: vertical; height: 120px; }
+        .btn { display: inline-block; background-color: var(--gold); color: white; padding: 12px 25px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: background 0.3s; width: 100%; text-align: center; font-size: 1rem; }
+        .btn:hover { background-color: #b45309; }
+        .back-btn { display: inline-block; margin-top: 25px; color: #94a3b8; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .back-btn:hover { color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><i class="fa-solid fa-handshake"></i> Partnership & Business Contract</h1>
+    <p class="sub">Collaborate with Atolagbe Academy. Fill out the proposal form below to pitch sponsorships, affiliate ventures, or strategic business alliances.</p>
+
+    <form action="/partnership" method="POST">
+        <label for="full_name">Full Name / Representative Name:</label>
+        <input type="text" id="full_name" name="full_name" placeholder="e.g. John Doe" required>
+
+        <label for="email">Business Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="e.g. john@company.com" required>
+
+        <label for="company">Company / Organization Name (Optional):</label>
+        <input type="text" id="company" name="company" placeholder="e.g. Apex Global Ltd">
+
+        <label for="proposal_type">Nature of Partnership:</label>
+        <select id="proposal_type" name="proposal_type" required>
+            <option value="" disabled selected>Select partnership category</option>
+            <option value="Sponsorship">Brand Sponsorship & Advertising</option>
+            <option value="Affiliate">Affiliate & Distribution Partnership</option>
+            <option value="Content Collaboration">Content & Course Collaboration</option>
+            <option value="Other">Other Business Proposal</option>
+        </select>
+
+        <label for="message">Proposal Summary / Contract Details:</label>
+        <textarea id="message" name="message" placeholder="Describe your proposal, objectives, and how we can create mutual value..." required></textarea>
+
+        <button type="submit" class="btn">Submit Business Proposal</button>
+    </form>
+
+    <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Return to Command Center</a>
+</div>
+
+</body>
+</html>
+
+
+
+
