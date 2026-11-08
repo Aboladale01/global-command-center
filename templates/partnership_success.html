@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Received | Atolagbe Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #0f172a; --gold: #d97706; --emerald: #10b981; --card-bg: #1e293b; --text-light: #f8fafc; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--primary); color: var(--text-light); display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
+        .card { background: var(--card-bg); padding: 40px; border-radius: 16px; border-top: 5px solid var(--emerald); text-align: center; max-width: 500px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: var(--emerald); margin-bottom: 15px; font-size: 1.5rem; }
+        p { color: #94a3b8; margin-bottom: 25px; font-size: 0.95rem; }
+        .btn { display: inline-block; background-color: var(--gold); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1><i class="fa-solid fa-circle-check"></i> Proposal Submitted Successfully</h1>
+        <p>Thank you, <strong>{{ name }}</strong>. Your partnership contract request has been securely logged into the Atolagbe Academy executive database. Our business relations team will review your pitch and get back to you shortly.</p>
+        <a href="/" class="btn">Return to Command Center</a>
+    </div>
+</body>
+</html>
