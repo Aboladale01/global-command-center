@@ -36,6 +36,29 @@ init_db()
 def home():
     return render_template('index.html')
 
+@app.route('/partnership', methods=['GET', 'POST'])
+def partnership_view():
+    if request.method == 'POST':
+        full_name = request.form.get('full_name')
+        email = request.form.get('email')
+        company = request.form.get('company')
+        proposal_type = request.form.get('proposal_type')
+        message = request.form.get('message')
+        
+        # Save to database
+        conn = sqlite3.connect('database.db') # Update with your actual db name if different
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO partnerships (full_name, email, company, proposal_type, message)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (full_name, email, company, proposal_type, message))
+        conn.commit()
+        conn.close()
+        
+        return render_template('partnership_success.html', name=full_name)
+        
+    return render_template('partnership.html')
+
 @app.route('/quiz')
 def quiz_view():
     return render_template('quiz.html')
