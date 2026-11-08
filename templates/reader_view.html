@@ -8,6 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - Atolagbe Academy</title>
     <style>
+<div class="reader-card">
+    <div class="module-header">
+        <div>
+            <h1>{{ title }}</h1>
+            <div style="background: rgba(217, 119, 6, 0.1); border: 1px solid var(--gold); padding: 10px 15px; border-radius: 8px; display: inline-block; margin-top: 10px;">
+                <i class="fa-solid fa-coins" style="color: var(--gold);"></i> <strong style="color: white;">AKV Wallet:</strong> <span style="color: var(--gold);">{{ tokens }} Tokens Earned</span>
+            </div>
+        </div>
+        <span class="badge">ACTIVE MODULE</span>
+    </div>
+    
+    <div class="content-body">
+        {{ content }}
+    </div>
+    
+    </div>
         :root {
             --primary-bg: #0f172a;
             --card-bg: #1e293b;
