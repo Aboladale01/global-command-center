@@ -9,7 +9,18 @@ def init_db():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS leads (
+        CREATE TABLE IF NOT EXISTS leads
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS partnerships (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        full_name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        company TEXT,
+        proposal_type TEXT NOT NULL,
+        message TEXT NOT NULL,
+        submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+''') (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             email TEXT NOT NULL,
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
