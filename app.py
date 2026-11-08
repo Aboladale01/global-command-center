@@ -11,7 +11,7 @@ def init_db():
     cursor.execute('''
 
         CREATE TABLE IF NOT EXISTS leads
-cursor.execute('''
+cursor.execute()
     CREATE TABLE IF NOT EXISTS partnerships (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         full_name TEXT NOT NULL,
@@ -21,7 +21,7 @@ cursor.execute('''
         message TEXT NOT NULL,
         submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
-''') (
+(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             email TEXT NOT NULL,
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
