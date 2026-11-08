@@ -133,6 +133,27 @@
             <p>{{ content }}</p>
         </div>
 
+            <div class="action-box" style="flex-direction: column; align-items: stretch; gap: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <strong style="color: white; display: block; margin-bottom: 4px;">Ready to study the full document?</strong>
+                        <span style="color: #94a3b8; font-size: 0.85rem;">Access the verified master file securely hosted in our cloud vault.</span>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="#" target="_blank" class="btn"><i class="fa-solid fa-cloud-arrow-down"></i> Open Google Drive PDF</a>
+                        <button onclick="alert('Progress saved! Keep crushing your goals, Boss.')" class="btn btn-success"><i class="fa-solid fa-check"></i> Mark Complete</button>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(15, 23, 42, 0.8)); border: 1px solid rgba(217, 119, 6, 0.4); padding: 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <span style="color: var(--gold); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fa-solid fa-brain"></i> Knowledge Check</span>
+                        <h4 style="color: #f8fafc; font-size: 1.05rem; margin: 4px 0;">Test Your Mastery & Earn AKV Points</h4>
+                        <p style="color: #94a3b8; font-size: 0.85rem;">Completed the reading? Take the quick module quiz to prove your insight.</p>
+                    </div>
+                    <a href="/quiz" class="btn" style="background-color: var(--gold); color: white;"><i class="fa-solid fa-bolt"></i> Launch Module Quiz</a>
+                </div>
+            </div>
         <div class="download-gate">
             <h3>Want to take this offline?</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Drop your email below to instantly have the complete downloadable file sent to your inbox.</p>
