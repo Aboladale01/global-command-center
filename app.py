@@ -26,7 +26,19 @@ def init_db():
         last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 ''')
-@app.route('/reader')
+   # Create partnerships table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS partnerships (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            full_name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            company TEXT,
+            proposal_type TEXT NOT NULL,
+            message TEXT NOT NULL,
+            submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    @app.route('/reader')
 def reader_view():
     sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
     sample_content = "Welcome to the core reading room..."
@@ -46,20 +58,6 @@ def reader_view():
         print("Database error:", e)
 
     return render_template('reader_view.html', title=sample_title, content=sample_content, tokens=total_ecosystem_tokens)
-
-    # Create partnerships table
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS partnerships (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            full_name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            company TEXT,
-            proposal_type TEXT NOT NULL,
-            message TEXT NOT NULL,
-            submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
     conn.commit()
     conn.close()
 
