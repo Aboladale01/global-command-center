@@ -66,10 +66,6 @@ def reader_view():
 # Run the database setup on start
 init_db()
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
 @app.route('/partnership', methods=['GET', 'POST'])
 def partnership_view():
     if request.method == 'POST':
