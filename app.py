@@ -92,10 +92,6 @@ def partnership_view():
 @app.route('/quiz')
 def quiz_view():
     return render_template('quiz.html')
-
-@app.route('/reader')
-def reader_view():
-    sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
     sample_content = "Welcome to the core reading room. Here you can read your modules, guides, and code strategies live on the screen..."
     return render_template('reader_view.html', title=sample_title, content=sample_content)
 @app.route('/submit-quiz', methods=['POST'])
