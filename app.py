@@ -26,6 +26,27 @@ def init_db():
         last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 ''')
+@app.route('/reader')
+def reader_view():
+    sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
+    sample_content = "Welcome to the core reading room..."
+    
+    total_ecosystem_tokens = 0
+    try:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        # Check if table exists first to prevent crashing
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='student_rewards'")
+        if cursor.fetchone():
+            cursor.execute("SELECT SUM(akv_tokens) FROM student_rewards")
+            result = cursor.fetchone()
+            total_ecosystem_tokens = result[0] if result and result[0] else 0
+        conn.close()
+    except Exception as e:
+        print("Database error:", e)
+
+    return render_template('reader_view.html', title=sample_title, content=sample_content, tokens=total_ecosystem_tokens)
+
     # Create partnerships table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS partnerships (
