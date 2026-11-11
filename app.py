@@ -48,8 +48,8 @@ init_db()
 @app.route('/')
 def index():
     return render_template('index.html')
-    
-  @app.route('/reader')
+
+@app.route('/reader')
 def reader_view():
     sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
     sample_content = "Welcome to the core reading room..."
