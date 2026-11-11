@@ -26,19 +26,40 @@ def init_db():
         last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 ''')
-   # Create partnerships table
+  
+   import sqlite3
+
+def init_db():
+    # This creates or connects to the database cleanly on the fly
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    
+    # Create your tables inline if they don't exist yet
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS student_rewards (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_email TEXT,
+            akv_tokens INTEGER DEFAULT 0
+        )
+    ''')
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS partnerships (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            full_name TEXT NOT NULL,
-            email TEXT NOT NULL,
+            full_name TEXT,
+            email TEXT,
             company TEXT,
-            proposal_type TEXT NOT NULL,
-            message TEXT NOT NULL,
-            submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            proposal_type TEXT,
+            message TEXT
         )
     ''')
-    @app.route('/reader')
+    
+    conn.commit()
+    conn.close()
+
+# Run it when app starts
+init_db()
+@app.route('/reader')
 def reader_view():
     sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
     sample_content = "Welcome to the core reading room..."
@@ -58,11 +79,6 @@ def reader_view():
         print("Database error:", e)
 
     return render_template('reader_view.html', title=sample_title, content=sample_content, tokens=total_ecosystem_tokens)
-    conn.commit()
-    conn.close()
-
-# Run the database setup on start
-init_db()
 
 @app.route('/partnership', methods=['GET', 'POST'])
 def partnership_view():
