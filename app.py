@@ -1,16 +1,13 @@
-python
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
 app = Flask(__name__)
-app.secret_key = 'atolagbe_secret_key_2026' # Required for flashing messages
+app.secret_key = 'atolagbe_secret_key_2026'
 
-# --- DATABASE SETUP FUNCTION ---
 def init_db():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-  
-    # Create leads table
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS leads (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,8 +15,7 @@ def init_db():
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
-    
-    # Create student rewards table (with clean, consolidated schema)
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS student_rewards (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,8 +25,7 @@ def init_db():
             last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
-    
-    # Create partnerships table
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS partnerships (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,9 +36,11 @@ def init_db():
             message TEXT
         )
     ''')
-    
+
     conn.commit()
     conn.close()
+
+init_db()
 
 # Run database initialization immediately when app boots
 init_db()
