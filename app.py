@@ -45,8 +45,6 @@ def init_db():
     conn.close()
 
 # Run database initialization immediately when app boots
-init_db()
-
 
 @app.route('/')
 def index():
@@ -200,5 +198,6 @@ def sandbox_view():
 
 
 if __name__ == '__main__':
+    def init_db():
     app.run(debug=True)
 ```
