@@ -2,13 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
 app = Flask(__name__)
+import sqlike3
+def init_db():
 app.secret_key = 'atolagbe_secret_key_2026' # Required for flashing messages
 
 # --- DATABASE SETUP FUNCTION ---
 def init_db():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    
+  
     # Create leads table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS leads (
