@@ -58,8 +58,6 @@ def reader_view():
     
     total_ecosystem_tokens = 0
     try:
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='student_rewards'")
         if cursor.fetchone():
             cursor.execute("SELECT SUM(akv_tokens) FROM student_rewards")
@@ -113,10 +111,7 @@ def submit_quiz():
     score_percentage = (correct_answers / total_questions) * 100
     
     earned_tokens = 0
-    passed = False
-    
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
+    passed = Fales
     
     if score_percentage >= 75:
         passed = True
@@ -198,6 +193,6 @@ def sandbox_view():
 
 
 if __name__ == '__main__':
-    def init_db():
+  
     app.run(debug=True)
 ```
