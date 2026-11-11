@@ -27,8 +27,7 @@ def init_db():
     )
 ''')
   
-   import sqlite3
-
+import sqlite3
 def init_db():
     # This creates or connects to the database cleanly on the fly
     conn = sqlite3.connect('database.db')
