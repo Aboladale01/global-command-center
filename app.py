@@ -117,17 +117,39 @@ def submit_quiz():
         passed = True
         earned_tokens = 100  # Reward for passing mastery level
         
-        cursor.execute("SELECT akv_tokens FROM student_rewards WHERE email = ?", (user_email,))
-        row = cursor.fetchone()
-        
-        if row:
-            cursor.execute("UPDATE student_rewards SET akv_tokens = akv_tokens + ?, quizzes_passed = quizzes_passed + 1 WHERE email = ?", (earned_tokens, user_email))
-        else:
-            cursor.execute("INSERT INTO student_rewards (email, akv_tokens, quizzes_passed) VALUES (?, ?, 1)", (user_email, earned_tokens))
-            
-        conn.commit()
-        
-    conn.close()
+@app.route('/reader')
+def reader_view():
+    sample_title = "Atolagbe Academy: Digital Wealth Blueprint"
+    sample_content = "Welcome to the core reading room..."
+
+    total_ecosystem_tokens = 0
+
+    try:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT name FROM sqlite_master
+            WHERE type='table' AND name='student_rewards'
+        """)
+
+        if cursor.fetchone():
+            cursor.execute("SELECT COALESCE(SUM(akv_tokens), 0) FROM student_rewards")
+            result = cursor.fetchone()
+            total_ecosystem_tokens = result[0] if result else 0
+
+        conn.close()
+
+    except sqlite3.Error as e:
+        print("Database error:", e)
+        total_ecosystem_tokens = 0
+
+    return render_template(
+        'reader_view.html',
+        title=sample_title,
+        content=sample_content,
+        tokens=total_ecosystem_tokens
+    )
 
     return render_template('quiz_result.html', percentage=score_percentage, passed=passed, tokens=earned_tokens)
 
