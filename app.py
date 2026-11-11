@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
 app = Flask(__name__)
- sqlike3
+ 
 app.secret_key = 'atolagbe_secret_key_2026' # Required for flashing messages
 
 # --- DATABASE SETUP FUNCTION ---
@@ -27,12 +27,6 @@ def init_db():
         last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 ''')
-  
-import sqlite3
-def init_db():
-    # This creates or connects to the database cleanly on the fly
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
     
     # Create your tables inline if they don't exist yet
     cursor.execute('''
@@ -124,10 +118,6 @@ def submit_quiz():
     if score_percentage >= 75:
         passed = True
         earned_tokens = 100  # Reward for passing mastery level
-        
-        # Save or update rewards in database
-        conn = sqlite3.connect('database.db')
-        cursor = conn.cursor()
         
         # Check if student exists in rewards table
         cursor.execute("SELECT akv_tokens FROM student_rewards WHERE email = ?", (user_email,))
