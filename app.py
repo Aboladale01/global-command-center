@@ -3,6 +3,13 @@ import sqlite3
 from google import genai
 from google.genai import types
 import os
+app = Flask(__name__)
+
+# Initialize GenAI client
+client = genai.Client()
+MODEL = "gemini-flash-latest"
+
+# ... rest of your code ...
 client = genai.Client()  # reads GEMINI_API_KEY from the environment
 MODEL = "gemini-flash-latest"
 PERSONAS = {
@@ -61,8 +68,6 @@ PERSONAS = {
     ),
     "general": "You are a helpful, friendly assistant. Keep answers clear and concise.",
 }
-
-app = Flask(__name__)
 app.secret_key = 'atolagbe_secret_key_2026'
 
 def init_db():
