@@ -243,5 +243,27 @@ def ceo_leads():
 def sandbox_view():
     return render_template('sandbox.html')
 
+@app.route('/ai-mentor')
+def ai_mentor_view():
+    return render_template('ai_mentor.html')
+
+@app.route('/api/ai-chat', methods=['POST'])
+def ai_chat_api():
+    data = request.get_json() or {}
+    user_message = data.get('message', '')
+    selected_persona = data.get('persona', 'general')
+    
+    instruction = PERSONAS.get(selected_persona, PERSONAS["general"])
+    
+    try:
+        chat = client.chats.create(
+            model=MODEL,
+            config=types.GenerateContentConfig(system_instruction=instruction),
+        )
+        response = chat.send_message(user_message)
+        return {"reply": response.text}
+    except Exception as e:
+        return {"reply": f"An error occurred with the AI service: {str(e)}"}, 500
+
 if __name__ == '__main__':
     app.run(debug=True)
