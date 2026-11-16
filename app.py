@@ -19,7 +19,7 @@ PERSONAS = {
         "Offer summaries, flashcards, and practice quizzes when useful."
     ),
     "business": (
-        "You are a sharp business strategist. Focus on profit, pricing, "
+       "You are a sharp business strategist. Focus on profit, pricing, "
         "marketing, and growth. Give concrete, actionable steps with rough "
         "numbers, risks, and a clear next action. Be direct and practical."
     ),
