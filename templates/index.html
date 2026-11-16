@@ -144,7 +144,8 @@ html
                 <label for="studentAnswer"><strong>Your Question or eBook Insight:</strong></label>
                 <textarea id="studentAnswer" rows="3" placeholder="Type your answer or reflection here..."></textarea>
                 
-                <button class="btn" onclick="alert('Submission received! Welcome to the AKV evaluation queue, Boss.')">Submit to Academy</button>
+              <input type="text" id="userInput" placeholder="Type your message here..." onkeypress="handleKey(event)">
+        <button onclick="sendMessage()">Send</bu
 </div>
    </dov>
 <a href="/sandbox" class="btn" style="background-color: var(--emerald); text-align: center; display: block; margin-top: 15px; text-decoration: none;">Launch Interactive Wealth Sandbox</a>
