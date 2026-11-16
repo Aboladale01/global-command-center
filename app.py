@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
+from google import genai
+from google.genai import types
+import os
 client = genai.Client()  # reads GEMINI_API_KEY from the environment
 MODEL = "gemini-flash-latest"
 PERSONAS = {
