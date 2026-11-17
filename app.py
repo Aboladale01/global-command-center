@@ -234,6 +234,21 @@ def send_download():
         
     return redirect(url_for('reader_view'))
 
+ verify your CEO / Admin status:
+@app.route('/reader')
+def reader_view():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    
+    # If you are logged in as admin/CEO, or a standard user, you enter!
+    return render_template('reader_view.html')
+
+@app.route('/ceo-leads')
+def ceo_leads():
+    # Only the CEO/Admin can enter this high-level room
+    if 'user' not in session or session.get('role') != 'admin':
+        return "Access Denied: CEO Master Access Required", 403
+    return render_template('ceo_leads.html')
 @app.route('/ceo/leads')
 def ceo_leads():
     conn = sqlite3.connect('database.db')
