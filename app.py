@@ -247,8 +247,6 @@ def ceo_leads():
     if 'user' not in session or session.get('role') != 'admin':
         return "Access Denied: CEO Master Access Required", 403
     return render_template('ceo_leads.html')
-@app.route('/ceo/leads')
-def ceo_leads():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("SELECT email, timestamp FROM leads ORDER BY timestamp DESC")
