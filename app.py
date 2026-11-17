@@ -234,7 +234,7 @@ def send_download():
         
     return redirect(url_for('reader_view'))
 
- verify your CEO / Admin status:
+ # verify your CEO / Admin status:
 @app.route('/reader')
 def reader_view():
     if 'user' not in session:
