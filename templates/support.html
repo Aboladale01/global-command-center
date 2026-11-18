@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+
+{% block title %}Support & Help Center - Atolagbe Academy{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="card shadow-sm border-0 p-4 mb-4">
+            <h3 class="fw-bold text-dark mb-3">❓ Frequently Asked Questions</h3>
+            <p class="text-muted small">Find quick answers regarding coursework, AKV tokens, and system access.</p>
+            <hr class="mb-4">
+
+            <div class="accordion" id="supportAccordion">
+                <div class="accordion-item mb-3 border rounded overflow-hidden">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How do I earn and claim AKV Tokens?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#supportAccordion">
+                        <div class="accordion-body text-muted">
+                            You earn AKV tokens by completing chapters in the Ebook Reader and scoring 75% or higher on the integrated chapter knowledge check quizzes. Tokens automatically update in your student ledger wallet.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-3 border rounded overflow-hidden">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How do I access the AI Mentor workspace?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#supportAccordion">
+                        <div class="accordion-body text-muted">
+                            Simply click the "AI Mentor" link in the top navigation bar to access real-time guidance, study assistance, and context-aware responses.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border rounded overflow-hidden">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Who should I contact for official partnerships?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#supportAccordion">
+                        <div class="accordion-body text-muted">
+                            You can review verified contracts and corporate collaboration frameworks via the Partnership link on the homepage or command center.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card shadow-sm border-0 p-4 bg-dark text-white">
+            <h4 class="fw-bold text-warning mb-2">🛠️ Open a Support Ticket</h4>
+            <p class="text-light small mb-4">Experiencing a technical issue or need direct assistance? Submit a ticket below.</p>
+
+            <form action="/support" method="POST">
+                <div class="mb-3">
+                    <label for="visitorEmail" class="form-label text-light">Your Email Address</label>
+                    <input type="email" class="form-control" id="visitorEmail" name="email" placeholder="name@example.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="issueCategory" class="form-label text-light">Issue Category</label>
+                    <select class="form-select" id="issueCategory" name="category">
+                        <option value="reader">Reader / Content Access</option>
+                        <option value="tokens">AKV Token Ledger</option>
+                        <option value="ai">AI Mentor Assistance</option>
+                        <option value="other">Other Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="issueMessage" class="form-label text-light">Describe Your Issue</label>
+                    <textarea class="form-control" id="issueMessage" name="message" rows="4" placeholder="Provide details so our team can resolve it quickly..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-warning fw-bold w-100 py-2">
+                    Submit Support Ticket
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+  
