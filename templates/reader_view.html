@@ -1,0 +1,90 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Atolagbe Academy{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="col-12">
+                {% for category, message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="col-lg-7">
+        <div class="card shadow-sm border-0 p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h3 class="fw-bold text-dark mb-1">📖 {{ title }}</h3>
+                    <span class="badge bg-warning text-dark">ACTIVE MODULE</span>
+                </div>
+                <div class="bg-light border px-3 py-2 rounded">
+                    <i class="fa-solid fa-coins text-warning"></i> <strong class="text-dark">AKV Wallet:</strong> <span class="text-warning fw-bold">{{ tokens }} Tokens</span>
+                </div>
+            </div>
+            <hr>
+
+            <div class="bg-light p-3 rounded mb-3 d-flex align-items-center justify-content-between">
+                <div>
+                    <span class="fw-bold text-secondary d-block">🎧 Audio Narration</span>
+                    <small class="text-muted">Listen while you read</small>
+                </div>
+                <audio id="chapterAudio" controls class="w-50">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div id="readerTextContent" class="p-3 bg-white border rounded" style="min-height: 300px; max-height: 450px; overflow-y: auto; line-height: 1.6;">
+                {{ content | safe }}
+            </div>
+
+            <div class="mt-4 p-3 bg-light rounded border">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <div>
+                        <strong class="text-dark d-block">☁️ Master Document Vault</strong>
+                        <small class="text-muted">Access the verified master file securely from the cloud.</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="#" target="_blank" class="btn btn-dark btn-sm"><i class="fa-solid fa-cloud-arrow-down"></i> Open Google Drive PDF</a>
+                        <button onclick="alert('Progress saved! Keep crushing your goals, Boss.')" class="btn btn-success btn-sm"><i class="fa-solid fa-check"></i> Mark Complete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card shadow-sm border-0 p-4 bg-dark text-white">
+            <h4 class="fw-bold text-warning mb-3">🧠 Knowledge Check</h4>
+            <p class="text-light small">Pass this module quiz with 75% or higher to automatically mint and claim your AKV tokens!</p>
+            <hr class="border-secondary">
+
+            <div id="quizContainer">
+                <div class="alert alert-secondary text-dark" role="alert">
+                    Ready to test your mastery? Answer the question below.
+                </div>
+                <p class="fw-bold text-warning">1. What is the core focus of this module?</p>
+                <div class="form-check mb-2"><input class="form-check-input" type="radio" name="q1" value="a"> <label class="form-check-label text-light">Global Command Systems & Execution</label></div>
+                <div class="form-check mb-2"><input class="form-check-input" type="radio" name="q1" value="b"> <label class="form-check-label text-light">Irrelevant Data Processing</label></div>
+            </div>
+
+            <button id="submitQuizBtn" class="btn btn-warning fw-bold w-100 mt-3">
+                Submit Quiz & Claim AKV Tokens
+            </button>
+
+            <div id="quizResult" class="mt-3 text-center fw-bold"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('submitQuizBtn').addEventListener('click', function() {
+        // Trigger AKV token reward feedback
+        document.getElementById('quizResult').innerHTML = `<span class="text-success">🎉 Score: 100%! +50 AKV Tokens successfully added to your ledger!</span>`;
+    });
+</script>
+{% endblock %}
