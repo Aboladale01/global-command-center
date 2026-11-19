@@ -115,22 +115,24 @@ init_db()
 def index():
     return render_template('index.html'
 
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        # Strip whitespace and convert username to lowercase to prevent typos
+        username = request.form.get('username', '').strip().lower()
+        password = request.form.get('password', '').strip()
+        
+        print(f"DEBUG LOGIN ATTEMPT -> Username: '{username}', Password: '{password}'")
+        
         if username == "admin" and password == "password": 
             session['user'] = username
             flash('Successfully authenticated, Boss!', 'success')
             return redirect(url_for('dashboard'))
         else:
-            flash('Invalid credentials, Boss! Try admin / password.', 'danger')
+            flash(f"Invalid login. You entered Username: '{username}'. Use 'admin' and 'password'.", 'danger')
+            return redirect(url_for('login'))
+            
     return render_template('login.html')
-
-
 
 @app.route('/partnership', methods=['GET', 'POST'])
 def partnership_view():
