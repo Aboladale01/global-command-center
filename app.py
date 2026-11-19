@@ -88,31 +88,7 @@ def init_db():
             email TEXT NOT NULL,
             akv_tokens INTEGER DEFAULT 0,
             quizzes_passed INTEGER DEFAULT 0,
-            last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS partnerships (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            full_name TEXT,
-            email TEXT,
-            company TEXT,
-            proposal_type TEXT,
-            message TEXT
-        )
-    ''')
-    
-    conn.commit()
-    conn.close()
-
-init_db()
-
-# --- PUBLIC ROUTES ---
-
-@app.route('/')
-def index():
-    return render_template('index.html')
+            last_
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -125,6 +101,24 @@ def login():
             return redirect(url_for('dashboard'))
         else:
             flash('Invalid credentials, Boss! Try admin / password.', 'danger')
+    return render_template('login.html')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Strip whitespace and convert username to lowercase to prevent typos
+        username = request.form.get('username', '').strip().lower()
+        password = request.form.get('password', '').strip()
+        
+        print(f"DEBUG LOGIN ATTEMPT -> Username: '{username}', Password: '{password}'")
+        
+        if username == "admin" and password == "password": 
+            session['user'] = username
+            flash('Successfully authenticated, Boss!', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash(f"Invalid login. You entered Username: '{username}'. Use 'admin' and 'password'.", 'danger')
+            return redirect(url_for('login'))
+            
     return render_template('login.html')
 
 @app.route('/partnership', methods=['GET', 'POST'])
